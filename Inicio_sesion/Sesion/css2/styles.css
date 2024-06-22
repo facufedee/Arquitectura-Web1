@@ -1,0 +1,432 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root{
+  --header-height: 3.5rem;
+
+  --white-color: hsl(0, 0%, 100%);
+  --black-color: hsl(0, 0%, 0%);
+  --body-font: "Noka", sans-serif;
+  --h1-font-size: 1.5rem;
+  --normal-font-size: .938rem;
+  --font-regular: 400;
+  --font-medium: 500;
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+@media screen and (min-width: 1150px) {
+  :root {
+    --normal-font-size: 1rem;
+  }
+}
+
+
+body {
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--white-color);
+  display: flex;
+  flex-direction: column;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+/*=============== HEADER & NAV ===============*/
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--black-color);
+  z-index: var(--z-fixed);
+}
+
+.nav {
+  position: relative;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+ 
+.nav__logo img{
+  color: var(--white-color);
+  font-weight: var(--font-medium);
+  width: 40%;
+}
+
+.nav__close, 
+.nav__toggle {
+  display: flex;
+  color: var(--white-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Navigation for mobile devices */
+@media screen and (max-width: 1150px) {
+
+  .nav__menu {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    background-color: var(--black-color);
+    width: 100%;
+    height: 100%;
+    padding: 6rem 3.5rem 4.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: left .4s;
+  }
+
+  .nav__item {
+    transform: translateX(-150px);
+    visibility: hidden;
+    transition: transform .4s ease-out, visibility .4s;
+  }
+
+  .nav__item:nth-child(1) {
+    transition-delay: .1s;
+  }
+  .nav__item:nth-child(2) {
+    transition-delay: .2s;
+  }
+  .nav__item:nth-child(3) {
+    transition-delay: .3s;
+  }
+  .nav__item:nth-child(4) {
+    transition-delay: .4s;
+  }
+  .nav__item:nth-child(5) {
+    transition-delay: .5s;
+  }
+}
+/* END Navigation for mobile devices */
+
+.nav__list, 
+.nav__social {
+  display: flex;
+}
+
+.nav__list {
+  flex-direction: column;
+  row-gap: 3rem;
+}
+
+.nav__link {
+  position: relative;
+  color: var(--white-color);
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-medium);
+  display: inline-flex;
+  align-items: center;
+  transition: opacity .4s;
+}
+
+.nav__link i {
+  font-size: 2rem;
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .4s, visibility .4s;
+}
+
+.nav__link span {
+  position: relative;
+  transition: margin .4s;
+}
+
+.nav__link span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background-color: var(--white-color);
+  transition: width .4s ease-out;
+}
+
+.nav__link:hover span {
+  margin-left: 2.5rem;
+}
+
+.nav__link:hover i {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav__link:hover span::after {
+  width: 100%;
+}
+
+.nav__list:has(.nav__link:hover) .nav__link:not(:hover) {
+  opacity: .4;
+}
+
+.nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+}
+
+.nav__social {
+  column-gap: 1rem;
+}
+
+.nav__social-link {
+  color: var(--white-color);
+  font-size: 1.5rem;
+  transition: transform .4s;
+}
+
+.nav__social-link:hover {
+  transform: translateY(-.25rem);
+}
+
+.show-menu {
+  left: 0;
+}
+
+.show-menu .nav__item {
+  visibility: visible;
+  transform: translateX(0);
+}
+
+@media screen and (min-width: 1150px) {
+  .container {
+    margin-inline: auto;
+  }
+
+  .nav {
+    height: calc(var(--header-height) + 2rem);
+  }
+
+  .nav__toggle, 
+  .nav__close {
+    display: none;
+  }
+
+  .nav__link {
+    font-size: var(--normal-font-size);
+  }
+
+  .nav__link i {
+    font-size: 1.5rem;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    column-gap: 3.5rem;
+  }
+
+  .nav__menu {
+    display: flex;
+    align-items: center;
+    column-gap: 3.5rem;
+  }
+}
+/* END For large devices */
+
+main{
+  margin-top: 80px;
+  background-image: url(../../images/taller-mecanico-west.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 5%;
+}
+
+.principal{
+  width: 70%;
+  color: aliceblue;
+}
+
+.texto-1 p a {
+  color: aliceblue;
+  background-color: blueviolet;
+  border-radius: 10px;
+  padding: 10px; /* Ajusta el padding en lugar de usar porcentajes */
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease; /* Agrega transición para suavizar el cambio */
+}
+
+.texto-1 p a:hover {
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.7); /* Cambia el box-shadow al pasar el mouse */
+}
+
+.ingresar{background-color: blueviolet;}
+
+.texto-1{
+  margin-top: -25%;
+}
+
+/*ESTILOS DE LAS ACCORDION*/
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 80%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+  margin: 0 auto;
+}
+.contenedor-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  align-items: center; 
+ }
+  .side-1{
+    width: 50%;
+  }
+
+  .side-2{
+    width: 50%;
+  }
+
+
+
+.active, .accordion:hover {
+  background-color: #ccc; 
+}
+
+.panel {
+  width: 80%;
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+
+
+footer{
+  width: 100%;
+  padding: 50px 0px;
+}
+
+.container__footer{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+.box__footer{
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.box__footer .logo img{
+  width: 180px;
+}
+
+.box__footer .terms{
+  max-width: 350px;
+  margin-top: 20px;
+  font-weight: 500;
+  color: #7a7a7a;
+  font-size: 18px;
+}
+
+.box__footer h2{
+  margin-bottom: 30px;
+  color: #343434;
+  font-weight: 700;
+}
+
+.box__footer a{
+  margin-top: 10px;
+  color: #7a7a7a;
+  font-weight: 600;
+}
+
+.box__footer a:hover{
+  opacity: 0.8;
+}
+
+.box__footer a .fab{
+  font-size: 20px;
+}
+
+.box__copyright{
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+  padding: 0px 40px;
+}
+
+.box__copyright p{
+  margin-top: 20px;
+  color: #7a7a7a;
+}
+
+.box__copyright hr{
+  border: none;
+  height: 1px;
+  background-color: #7a7a7a;
+}
+
+/* Estilo para la ventana emergente */
+.ventana {
+  background: rgba(7, 7, 14, 0.95); /* Color con leve transparencia */
+  color: rgba(255, 255, 255, 0.9);  /* Color de texto más suave */
+  font-size: 18px; /* Tamaño de texto */
+  text-align: center; /* Texto centrado */
+  padding: 33px; /* Espaciado interno */
+  min-height: 250px; /* Altura mínima */
+  border-radius: 22px; /* Bordes redondeados */
+  position: fixed; /* Fijo para mantener el modal centrado */
+  left: 50%; /* Centra horizontalmente */
+  top: 50%; /* Centra verticalmente */
+  transform: translate(-50%, -50%); /* Ajusta la posición para centrar */
+  z-index: 10; /* Para asegurar que el modal esté por encima de otros elementos */
+  display: none; /* Inicialmente oculto */
+  transition: opacity 0.3s ease-in-out; /* Transición suave para apertura y cierre */
+}
+
+/* Estilo para el botón de cerrar */
+#cerrar {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  cursor: pointer;
+}
+
+/* Media query para ajustar el tamaño del modal en pantallas más pequeñas */
+@media (max-width: 600px) {
+  .ventana {
+    width: 80%; /* Ajusta el ancho para pantallas pequeñas */
+    padding: 20px; /* Reduce el padding */
+  }
+}

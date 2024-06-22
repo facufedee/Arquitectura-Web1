@@ -1,0 +1,50 @@
+﻿/* Estilos para la tarjeta de producto */
+.producto-tarjeta {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+}
+
+.producto-imagen {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.producto-titulo {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.producto-descripcion {
+    margin-bottom: 10px;
+}
+
+.producto-precio {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.btn-agregar-carrito {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+    .btn-agregar-carrito:hover {
+        background-color: #0056b3;
+    }
+
